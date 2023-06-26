@@ -23,7 +23,7 @@ discordClient.on("message", message => {
 	// This isn't the best method but it's good enough.
 	// A webhook counts as a bot in the discord api, don't ask me why.
 	// Ignore messages from bots if DISCORD_FORWARD_BOT is 'false'
-	var text = `*Discord'dan ${message.author.username}: ${message.content} *\n`;
+	var text = `*Discord'dan ${message.author.username}: ${message} *\n`;
 
 	try {
 		telegram.sendMessage(TELEGRAM_CHAT_ID, text, {parse_mode: 'markdown'});
