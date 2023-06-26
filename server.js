@@ -36,15 +36,7 @@ discordClient.on("message", message => {
 		attachmentUrls.push(attachment[1].url);
 	}
 
-	// attachmentUrls is empty when there are no attachments so we can be just lazy
-	var finalMessageContent = message.content.replace(/<@.*>/gi, '');
-	// convert bold text for telegram markdown
-	finalMessageContent = finalMessageContent.replace(/\*\*/g, '*');
-
-	var text = `*\[DISCORD\] ${message.author.username} (${message.author.username}#${message.author.discriminator}):*\n`;
-	text += finalMessageContent
-	text += ` ${attachmentUrls.join(' ')}`;
-	text += mentioned_usernames.join(" ");
+	var text = `*\[DISCORD\] ${message.author.username} : message.content*\n`;
 
 	try {
 		telegram.sendMessage(TELEGRAM_CHAT_ID, text, {parse_mode: 'markdown'});
