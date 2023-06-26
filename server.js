@@ -102,9 +102,7 @@ telegram.on("message", async (message) => {
 			}
 		}
 		if (!fileId || fileUrl == "") {
-			await discordWebhookClient.send(text, {
-				username: username,	avatarURL: profileUrl
-			});
+			await discordWebhookClient.send(text);
 		}
 	}
 	catch(err) {
