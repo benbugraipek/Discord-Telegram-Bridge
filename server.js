@@ -23,20 +23,7 @@ discordClient.on("message", message => {
 	// This isn't the best method but it's good enough.
 	// A webhook counts as a bot in the discord api, don't ask me why.
 	// Ignore messages from bots if DISCORD_FORWARD_BOT is 'false'
-	if (message.channel.id !== DISCORD_CHANNEL_ID || (message.author.bot && !DISCORD_FORWARD_BOT)) {
-		return;
-	}
-
-	let mentioned_usernames = []
-	for (let mention of message.mentions.users) {
-		mentioned_usernames.push("@" + mention[1].username);
-	}
-	var attachmentUrls = []
-	for (let attachment of message.attachments) {
-		attachmentUrls.push(attachment[1].url);
-	}
-
-	var text = `*Discord'dan ${message.author.username} : ${message.content} *\n`;
+	var text = `*Discord'dan ${message.author.username}: ${message.content} *\n`;
 
 	try {
 		telegram.sendMessage(TELEGRAM_CHAT_ID, text, {parse_mode: 'markdown'});
@@ -50,10 +37,6 @@ discordClient.on("message", message => {
 // Telegram -> Discord handler
 telegram.on("message", async (message) => {
 
-	// console.log(message)
-	if (message.chat.id != TELEGRAM_CHAT_ID) {
-		return;
-	}
 
 	// Ignore messages from bots
 	if (message.from.is_bot) {
