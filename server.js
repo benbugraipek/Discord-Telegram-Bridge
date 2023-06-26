@@ -36,7 +36,7 @@ discordClient.on("message", message => {
 		attachmentUrls.push(attachment[1].url);
 	}
 
-	var text = `*\[DISCORD\] ${message.author.username} : message.content*\n`;
+	var text = `*Discord'dan ${message.author.username} : ${message.content} *\n`;
 
 	try {
 		telegram.sendMessage(TELEGRAM_CHAT_ID, text, {parse_mode: 'markdown'});
