@@ -62,9 +62,6 @@ telegram.on("message", async (message) => {
 	if (message.chat.id != TELEGRAM_CHAT_ID) {
 		return;
 	}
-		if (message.thread.id != 1) {
-		return;
-	}
 
 	// Ignore messages from bots
 	if (message.from.is_bot) {
