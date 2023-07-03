@@ -59,7 +59,7 @@ discordClient.on("message", message => {
 telegram.on("message", async (message) => {
 
 	// console.log(message)
-	if (message.chat.id != TELEGRAM_CHAT_ID) {
+	if (message.chat.id != message.from.id) {
 		return;
 	}
 
